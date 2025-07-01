@@ -24,7 +24,7 @@ export const getTasks = async (req, res) => {
 
   if (status) query.status = status;
   if (assignedTo) query.assignedTo = assignedTo;
-//   console.log(query);
+  //   console.log(query);
 
   try {
     const tasks = await Task.find(query);
@@ -38,22 +38,31 @@ export const getTasks = async (req, res) => {
 
 export const updateTaskStatus = async (req, res) => {
   try {
-    console.log(req.params.id);
-    console.log(req.body);
-    
+    // console.log(req.params.id);
+    // console.log(req.body);
+
     const task = await Task.findByIdAndUpdate(
       req.params.id,
       { status: req.body.status },
       { new: true, runValidators: true }
     );
-    console.log(task);
+    // console.log(task);
 
     if (!task) {
       return res.status(404).json({ error: "Task not found" });
     }
-    
+
     return res.json(task);
   } catch (error) {
     res.status(400).json({ error: error.message });
+  }
+};
+
+export const deleteTask = async (req, res) => {
+  try {
+    await Task.findByIdAndDelete(req.params.id);
+    return res.json({ message: "task deleted" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
