@@ -14,3 +14,19 @@ export const fetchTasks = async (filters = {}) => {
   const res = await fetch(`${BASE_URL}?${query}`);
   return res.json();
 };
+
+export const updateStatus = async (id, status) => {
+  const res = await fetch(`${BASE_URL}/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ status }),
+  });
+  return res.json();
+};
+
+export const deleteTask = async (id) => {
+  const res = await fetch(`${BASE_URL}/${id}`, {
+    method: "DELETE",
+  });
+  return res.json();
+};

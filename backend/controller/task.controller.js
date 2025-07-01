@@ -21,9 +21,14 @@ export const createTask = async (req, res) => {
 export const getTasks = async (req, res) => {
   const { status, assignedTo } = req.query;
   const query = {};
+  
 
+  
   if (status) query.status = status;
-  if (assignedTo) query.assignedTo = assignedTo;
+  
+  if (assignedTo) {
+      query.assignedTo = { $regex: new RegExp(assignedTo, "i") }; // 👈 case-insensitive match
+  }
   //   console.log(query);
 
   try {
