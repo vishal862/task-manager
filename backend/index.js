@@ -5,11 +5,7 @@ const cors = require("cors");
 const path = require("path");
 const taskRoute = require("./routes/task.route");
 
-// ✅ initialize app BEFORE using it
 const app = express();
-
-// ✅ resolve __dirname safely
-const __dirname = path.resolve();
 
 // Load environment variables
 dotenv.config();
@@ -18,18 +14,21 @@ dotenv.config();
 app.use(cors());
 app.use(express.json());
 
-// Routes
+// API routes
 app.use("/api/tasks", taskRoute);
 
-// ✅ Serve static frontend
+// Serve static frontend
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
-
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
 });
 
-// Connect to MongoDB and start server
+// Start server
 mongoose
   .connect(process.env.MONGO_URI)
-  .then(() => app.listen(5000, () => console.log("Server running")))
+  .then(() =>
+    app.listen(process.env.PORT || 5000, () =>
+      console.log("Server running")
+    )
+  )
   .catch((err) => console.error(err));
