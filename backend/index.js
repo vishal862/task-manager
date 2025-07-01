@@ -1,10 +1,9 @@
-import express from "express";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-import cors from "cors";
-import taskRoute from "./routes/task.route.js"
-import { fileURLToPath } from "url";
-import path from "path";
+const express = require("express");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const cors = require("cors");
+const taskRoute = require("./routes/task.route");
+const path = require("path");
 
 
 
