@@ -24,19 +24,10 @@ A simple collaborative task manager built using the **MERN stack**. This applica
 
 ## 📁 Project Structure
 
-
----
-
-## 🌐 Live Demo
-
-- 🔗 **Frontend**: [Vercel Deployment URL](https://your-vercel-link.vercel.app)
-- 🔗 **Backend API**: [Render API Endpoint](https://your-render-link.onrender.com/api/tasks)
-
----
-
 ## 🛠️ How to Run Locally
 
 ### 1. Clone the repo
+```bash
 git clone https://github.com/vishal862/task-manager.git
 cd task-manager
 
