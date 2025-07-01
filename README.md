@@ -19,7 +19,6 @@ A simple collaborative task manager built using the **MERN stack**. This applica
 | Frontend    | React.js (Vite + TailwindCSS) |
 | Backend     | Node.js, Express.js  |
 | Database    | MongoDB (with Mongoose) |
-| Deployment  | Frontend: Vercel<br>Backend: Render |
 
 ---
 
