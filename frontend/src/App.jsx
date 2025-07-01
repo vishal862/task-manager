@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchTasks } from "./api/api";
 import TaskForm from "./components/TaskForm";
+import FilterBar from "./components/FilterBar";
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
@@ -20,6 +21,7 @@ export default function App() {
     <div>
       <h2>Task Manager</h2>
       <TaskForm onTaskCreated={(newTask) => setTasks([...tasks, newTask])} />
+      <FilterBar filters={filters} onFilterChange={setFilters}/>
     </div>
   );
 }
