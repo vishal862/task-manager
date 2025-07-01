@@ -3,10 +3,20 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import taskRoute from "./routes/task.route.js"
+import { fileURLToPath } from "url";
+import path from "path";
 
 
-const __dirname = path.resolve();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve static frontend
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+});
 
 dotenv.config();
 const app = express();
@@ -16,11 +26,7 @@ app.use(express.json());
 
 app.use("/api/tasks",taskRoute)
 
-app.use(express.static(path.join(__dirname, '/frontend/dist')));
 
-app.get('*',(req,res)=>{
-    res.sendFile(path.join(__dirname,'frontend','dist','index.html'))
-})
 
 mongoose
   .connect(process.env.MONGO_URI)
