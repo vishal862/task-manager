@@ -1,12 +1,11 @@
-const express = require("express");
-const {
+import express from "express";
+import {
   createTask,
   deleteTask,
   getTasks,
   test,
   updateTaskStatus,
-} = require("../controller/task.controller");
-
+} from "../controller/task.controller.js";
 
 const router = express.Router();
 

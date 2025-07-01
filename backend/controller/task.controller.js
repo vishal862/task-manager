@@ -1,4 +1,4 @@
-const Task = require("../model/task.model");
+import Task from "../model/task.model.js";
 
 export const test = (req, res) => {
   return res.json({ message: "running" });
