@@ -20,7 +20,7 @@ app.use(cors());
 app.use(express.json());
 
 // API routes
-app.use("/api/tasks", taskRoute);
+// app.use("/api/tasks", taskRoute);
 
 // ✅ Serve static frontend
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
